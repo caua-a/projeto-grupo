@@ -1,25 +1,37 @@
+.banner{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.664), rgba(0, 0, 0, 0.664)),url(https://images.pexels.com/photos/24245659/pexels-photo-24245659.jpeg);
+    background-size: 100%;
+    background-position-y:105vh;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-light);
+    
+}
 
+.banner__title{
+    font-size: 4rem;
+    line-height: 100px;
+    transition:0.6s;
+    cursor: pointer;
+    
+}
 
+.banner__title:hover{
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.438);
+    letter-spacing: 10px;
+    font-size: 5rem;
 
+}
 
+.banner__title--highlight{
+    color: var(--primary-red);
+}
 
+.banner__subtitle{
+    font-size: 1.3rem;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Escolha rápida */
