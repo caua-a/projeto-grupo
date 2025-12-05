@@ -1,6 +1,6 @@
 :root{
     /* ====== CORES PRINCIPAIS ====== */
-    --primary-red: #a10000;        /* Botões, destaques */
+    --primary-red: #e63946;        /* Botões, destaques */
     --primary-blue: #0a1a2f;       /* Header/Footer escuro (quase azul marinho) */
     --primary-orange: #f4a261;     /* Botões "EU QUERO" */
 
@@ -12,13 +12,14 @@
     /* ====== BACKGROUNDS ====== */
     --bg-light: #f1f8f3;           /* Fundo dos destaques (verde bem claro) */
     --bg-white: #ffffff;
-    --bg-gray-light: #f7f7f7;
+    --bg-gray-light: #e0dfdf;
     --bg-dark-overlay: rgba(0, 0, 0, 0.6); /* Overlay do banner */
 
     /* ====== TEXTOS ====== */
     --text-dark: #222222;
     --text-light: #ffffff;
     --text-gray: #545454;
+    --text-dark-blue: #201866; 
 
     /* ====== BORDAS E LINHAS ====== */
     --border-light: #e4e4e4;
