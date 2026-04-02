@@ -1,0 +1,86 @@
+body {
+    background: #f5f5f5;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+
+    height: 100vh;
+}
+
+.produto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.produto-card {
+    display: flex;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    overflow: hidden;
+    max-width: 900px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.3);
+}
+
+.produto-card img {
+    width: 450px;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.produto-card img:hover {
+    transform: scale(1.05);
+}
+
+.produto-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    max-width: 400px;
+}
+
+.produto-info h1 {
+    font-size: 2.8rem;
+    color: #222;
+    margin: 0;
+}
+
+.produto-info p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.produto-preco {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e63946;
+}
+
+.produto-botao {
+    width: 220px;
+    padding: 16px;
+    background: linear-gradient(135deg, #ff6600, #ff8533);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.produto-botao:hover {
+    background: linear-gradient(135deg, #ff8533, #ff6600);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}

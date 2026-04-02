@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block css_adicional %}
+<link rel="stylesheet" href="../static/css/produtos.css">
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="produto-container">
+
+    <div class="produto-card">
+        {% for item in itens %}
+        <!-- IMAGEM -->
+        <div>
+            <img src="https://conteudo.imguol.com.br/c/entretenimento/ee/2022/04/28/hamburguer-sanduiche-lanche-1651166602338_v2_4x3.jpg" alt="Lanche Delicioso">
+        </div>
+
+        <!-- INFO -->
+        <div class="produto-info">
+            <h1>{{item.produto}}</h1>
+            <p>
+            {{item.descricao}}
+            </p>
+            <div class="produto-preco">R${{item.preco}}</div>
+            <button class="produto-botao">Comprar agora</button>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
