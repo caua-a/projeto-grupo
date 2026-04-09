@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def pag_principal():
-    return render_template('index.html')
+    itens = select()
+    return render_template('index.html', itens=itens)
 
 @app.route('/pagina2')
 def pag_2():
