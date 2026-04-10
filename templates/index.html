@@ -40,6 +40,7 @@
 
     <div class="products__grid">
       {% for item in itens %}
+        {% if item.destaque %}
       <article class="card" id="lanche-1">
         <div class="card__image-wrapper">
           <img
@@ -59,6 +60,7 @@
           </div>
         </div>
       </article>
+      {% endif %}
       {% endfor %}
     </div>
 

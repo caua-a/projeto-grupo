@@ -8,9 +8,9 @@ def pag_principal():
     itens = select()
     return render_template('index.html', itens=itens)
 
-@app.route('/pagina2')
+@app.route('/pagina2/<id>')
 def pag_2():
-    itens = select()
+    itens = select(id)
     return render_template('pagina2.html', itens=itens)
 
 
