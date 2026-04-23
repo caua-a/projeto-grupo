@@ -1,6 +1,6 @@
-
 {% extends "layout.html" %}
 {% block conteudo %}
+<p>Dados que chegaram: {{ itens }}</p>
 <!-- Banner -->
 <section class="banner">
   <div class="banner__content">
@@ -19,17 +19,14 @@
     <h2 class="categories__title">Escolha Rápida</h2>
 
     <div class="categories__list">
+
       {% for item in itens %}
       <div class="category-item">
-        <img
-          src="{{item.foto}}"
-          alt="Lanche 1"
-          class="category-item__img"
-        />
-        <a href="#lanche-1" class="button button--small">EU QUERO</a>
+        <img src="{{item.foto}}" alt="Lanche" class="category-item__img" />
+        <a href="/pagina2/{{item.codigo}}" class="button button--small">EU QUERO</a>
       </div>
       {% endfor %}
-     </div>
+    </div>
   </div>
 </section>
 
@@ -40,14 +37,10 @@
 
     <div class="products__grid">
       {% for item in itens %}
-        {% if item.destaque %}
+      {% if item.destaque %}
       <article class="card" id="lanche-1">
         <div class="card__image-wrapper">
-          <img
-            src="{{item.foto}}"
-            alt="{{item.produto}}"
-            class="card__image"
-          />
+          <img src="{{item.foto}}" alt="{{item.produto}}" class="card__image" />
         </div>
         <div class="card__body">
           <h3 class="card__title">{{item.produto}}</h3>
@@ -65,9 +58,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 40px">
-      <a href="#menu" class="button button--primary"
-        >Voltar para Destaques</a
-      >
+      <a href="#menu" class="button button--primary">Voltar para Destaques</a>
     </div>
   </div>
 </section>
