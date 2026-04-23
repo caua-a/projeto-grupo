@@ -279,3 +279,50 @@ html{
     color: var(--text-light);
     text-align: center;
 }
+
+/* Sidebar - Escondida por padrão */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Move para fora da tela à direita */
+    width: 350px;
+    height: 100vh;
+    background: white;
+    z-index: 1001;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Overlay - Escondido por padrão */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+/* QUANDO O CHECKBOX FOR MARCADO: */
+
+/* 1. Desliza o carrinho para dentro */
+#cart-toggle:checked ~ .cart-sidebar {
+    right: 0;
+}
+
+/* 2. Mostra o fundo escuro */
+#cart-toggle:checked ~ .cart-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilização básica interna */
+.cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+.cart-content { flex: 1; padding: 20px; }
+.cart-footer { padding: 20px; border-top: 1px solid #eee; }

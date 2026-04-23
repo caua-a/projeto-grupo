@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block conteudo %}
-<p>Dados que chegaram: {{ itens }}</p>
 <!-- Banner -->
 <section class="banner">
   <div class="banner__content">
@@ -49,7 +48,9 @@
           </p>
           <div class="card__footer">
             <span class="card__price">R$ {{item.preco}}</span>
+            <a href="/pagina2/{{item.codigo}}">
             <button class="button button--small">Comprar</button>
+            </a>
           </div>
         </div>
       </article>

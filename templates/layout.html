@@ -1,78 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevBurger - Flex & Grid 2025</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevBurger - Flex & Grid 2025</title>
 
-<!-- Incluir os links para CSS (pode ter mais arquivos ou arquivos com nomes diferentes) -->
-    <link rel="stylesheet" href="../static/css/main.css" />
-    <link rel="stylesheet" href="../static/css/variables.css" />
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/media.css" />
-    {% block css_adicional %}
-    
-    {%endblock%}
-  </head>
-  <body>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-  <!-- Header e Navbar -->
-    <header class="header">
-      <div class="header__container">
-        <a href="#" class="header__logo">DevBurger</a>
+  <!-- Incluir os links para CSS (pode ter mais arquivos ou arquivos com nomes diferentes) -->
+  <link rel="stylesheet" href="../static/css/main.css" />
+  <link rel="stylesheet" href="../static/css/variables.css" />
+  <link rel="stylesheet" href="../static/css/reset.css" />
+  <link rel="stylesheet" href="./src/css/media.css" />
+  {% block css_adicional %}
 
-        <nav class="header__nav">
-          <ul class="header__menu">
-            <li class="header__item">
-              <a href="#" class="header__link">Home</a>
-            </li>
-            <li class="header__item">
-              <a href="#menu" class="header__link">Cardápio</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Sobre</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Contato</a>
-            </li>
-          </ul>
-        </nav>
+  {%endblock%}
+</head>
 
-        <div class="header__social">
-          <a href="#" class="header__icon"
-            ><span class="material-symbols-outlined">thumb_up</span></a
-          >
-          <a href="#" class="header__icon"
-            ><span class="material-symbols-outlined">photo_camera</span></a
-          >
+<body>
+  <input type="checkbox" id="cart-toggle" style="display: none;" {% if request.args.get('abrir_carrinho')=='true' %}
+    checked {% endif %}>
+
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h2>Seu Carrinho</h2>
+      <a href="/" class="material-symbols-outlined" style="text-decoration:none; color:black;">close</a>
+    </div>
+
+    <div class="cart-content">
+    {% if session.get('carrinho') %}
+        {% for item in session['carrinho'] %}
+        <div class="cart-item" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="{{ item.foto }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                <div>
+                    <p style="font-weight: bold; margin: 0; font-size: 0.9rem;">{{ item.nome }}</p>
+                    <p style="color: var(--primary-red); margin: 0; font-size: 0.85rem;">R$ {{ item.preco }}</p>
+                </div>
+            </div>
+
+            <a href="/remover/{{ loop.index0 }}" 
+               class="material-symbols-outlined" 
+               style="text-decoration: none; color: #999; font-size: 1.2rem; cursor: pointer; transition: color 0.2s;"
+               onmouseover="this.style.color='red'" 
+               onmouseout="this.style.color='#999'">
+               delete
+            </a>
         </div>
+        {% endfor %}
+        
+        <div style="margin-top: 10px;">
+            <a href="/limpar" style="color: red; font-size: 0.8rem; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 1rem;">delete_sweep</span>
+                Limpar Carrinho Inteiro
+            </a>
+        </div>
+    {% else %}
+        <p style="text-align: center; color: #777;">O carrinho está vazio.</p>
+    {% endif %}
+</div>
+    <div class="cart-footer">
+      <button class="button button--primary" style="width: 100%;">Finalizar Pedido</button>
+    </div>
+  </div>
 
-        <button class="header__toggle">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
+  <label for="cart-toggle" class="cart-overlay"></label>
+
+  <label for="cart-toggle" class="cart-overlay"></label>
+  <!-- Header e Navbar -->
+  <header class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">DevBurger</a>
+
+      <nav class="header__nav">
+        <ul class="header__menu">
+          <li class="header__item">
+            <a href="#" class="header__link">Home</a>
+          </li>
+          <li class="header__item">
+            <a href="#menu" class="header__link">Cardápio</a>
+          </li>
+          <li class="header__item">
+            <a href="#" class="header__link">Sobre</a>
+          </li>
+          <li class="header__item">
+            <a href="#" class="header__link">Contato</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__social">
+        <label for="cart-toggle" class="header__icon" style="cursor: pointer; position: relative;">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          {% if session.get('carrinho') %}
+          <span style="
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: var(--primary-red, red);
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 10px;
+        font-weight: bold;
+      ">
+            {{ session['carrinho']|length }}
+          </span>
+          {% endif %}
+        </label>
+
+        <a href="#" class="header__icon"><span class="material-symbols-outlined">thumb_up</span></a>
+        <a href="#" class="header__icon"><span class="material-symbols-outlined">photo_camera</span></a>
       </div>
-    </header>
-  
 
-{% block conteudo %}
-{% endblock %}
+      <button class="header__toggle">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </header>
 
-<!-- Rodapé -->
-    <footer class="footer">
-      <p class="footer__text">
-        DevBurger © 2025. Todos os direitos reservados.
-      </p>
-    </footer>
-  </body>
+
+  {% block conteudo %}
+  {% endblock %}
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p class="footer__text">
+      DevBurger © 2025. Todos os direitos reservados.
+    </p>
+  </footer>
+</body>
+
 </html>

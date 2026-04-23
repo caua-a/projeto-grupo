@@ -15,7 +15,9 @@
             <h1>{{ item.produto }}</h1>
             <p>{{ item.descricao }}</p>
             <div class="produto-preco">R$ {{ item.preco }}</div>
-            <button class="produto-botao">Comprar agora</button>
+ <a href="/adicionar/{{ item.codigo }}" class="produto-botao" style="text-decoration: none; display: block; text-align: center;">
+    Comprar agora
+</a>
         </div>
     </div>
 </div>
